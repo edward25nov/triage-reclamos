@@ -1,0 +1,34 @@
+# Mapa de etiquetas: categoría del CFPB (columna Product) -> equipo de NovaBanca.
+# Es una decisión de negocio: si cambia, cambian los datos procesados y el modelo.
+# En 2023 el CFPB renombró varias categorías; por eso hay dos nombres para la misma clase.
+# Las categorías que no aparecen aquí van a clase_por_defecto.
+
+clases:
+  reporte_credito:
+    - Credit reporting, credit repair services, or other personal consumer reports
+    - Credit reporting or other personal consumer reports
+  cobranza:
+    - Debt collection
+  cuentas:
+    - Checking or savings account
+  tarjetas:
+    - Credit card or prepaid card
+    - Credit card
+    - Prepaid card
+  hipotecas:
+    - Mortgage
+  prestamos:
+    - Student loan
+    - Vehicle loan or lease
+    - Payday loan, title loan, or personal loan
+    - Payday loan, title loan, personal loan, or advance loan
+  transferencias:
+    - Money transfer, virtual currency, or money service
+  otros:
+    - Debt or credit management
+
+clase_por_defecto: otros
+
+# Reglas por subproducto (columna Sub-product). Tienen prioridad sobre "clases".
+# Sub-product solo se usa aquí, para construir la etiqueta; nunca como feature del modelo.
+por_subproducto: {}
