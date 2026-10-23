@@ -69,9 +69,20 @@ def leer_crudos(raw_dir: str) -> pd.DataFrame:
     return renombrar(pd.concat(partes, ignore_index=True))
 
 
+def leer_landing(landing_dir: str) -> pd.DataFrame:
+    """Reclamos nuevos: un parquet por día con las mismas columnas del CSV. Sin archivos, devuelve un DataFrame vacío."""
+    archivos = sorted(Path(landing_dir).glob("*.parquet"))
+    partes = [pd.read_parquet(a).astype("string") for a in archivos]
+    if not partes:
+        return renombrar(pd.DataFrame(columns=list(COLUMNAS)))
+    return renombrar(pd.concat(partes, ignore_index=True))
+
+
 def construir(params: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
     label_map = cargar_yaml(params["data"]["label_map"])
-    df = limpiar(leer_crudos(params["data"]["raw_dir"]))
+    crudos = leer_crudos(params["data"]["raw_dir"])
+    landing = leer_landing(params["data"].get("landing_dir", "data/landing"))
+    df = limpiar(pd.concat([crudos, landing], ignore_index=True))
     df["clase"] = asignar_clase(df, label_map)
 
     corte = pd.Timestamp(params["split"]["val_start"])

@@ -2,6 +2,7 @@ seed: 42
 
 data:
   raw_dir: data/raw
+  landing_dir: data/landing
   golden_path: data/golden/golden_test.parquet
   processed_dir: data/processed
   label_map: configs/label_map.yaml
