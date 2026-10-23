@@ -15,6 +15,7 @@ Datos: narrativas públicas del CFPB (archivo del FOIA Reading Room). Caso de es
 - `configs/label_map.yaml`: mapa de categorías del CFPB a clases de negocio.
 - `params.yaml`: semilla, split, muestreo e hiperparámetros.
 - `data/raw/`: extracto de 2023 · `data/golden/`: conjunto de prueba fijo (primer semestre de 2025).
+- `data/landing/`: reclamos nuevos, un parquet por día con las mismas columnas del CSV del CFPB (opcional; `make data` los suma a data/raw).
 
 ## Reglas del modelo
 - La única feature es el texto del reclamo. Nunca usar Issue, Sub-issue ni Sub-product como features: es fuga de la etiqueta.
