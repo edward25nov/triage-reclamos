@@ -1,0 +1,8 @@
+{
+  "f1_macro_val": 0.6877,
+  "f1_macro_golden": 0.6111,
+  "n_train": 28173,
+  "n_val": 7134,
+  "n_clases": 8,
+  "tamano_modelo_mb": 5.2
+}

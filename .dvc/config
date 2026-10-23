@@ -1,0 +1,4 @@
+[core]
+    remote = storage
+['remote "storage"']
+    url = /Users/edward/Documents/datascience/product development/clase2/product-dev/dvc-storage/triage-reclamos
