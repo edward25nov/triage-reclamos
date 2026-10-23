@@ -22,3 +22,15 @@ Datos: narrativas públicas del CFPB (archivo del FOIA Reading Room). Caso de es
 - El split es temporal (split.val_start en params.yaml), nunca aleatorio.
 - golden_test nunca se usa para entrenar.
 - Ordenar por complaint_id antes de muestrear y usar la semilla de params.yaml.
+
+## Reglas de datos
+- Los datos se versionan con DVC, nunca con Git: data/raw, data/golden y data/processed se suben con `dvc add` y `dvc push`.
+- En Git solo van los punteros `.dvc` y `data/.gitignore`.
+- Remoto de DVC: `storage` (/Users/edward/Documents/datascience/product development/clase2/product-dev/dvc-storage/triage-reclamos).
+- Si cambian los datos, hacer `dvc add` y `dvc push` antes de commitear los punteros `.dvc`.
+
+## Reglas de Git
+- Nunca se trabaja en main: todo cambio va en una rama (feat/..., fix/..., docs/...).
+- Commits pequeños con un solo cambio lógico cada uno.
+- Mensajes con Conventional Commits: `tipo: descripción` (feat, fix, docs, refactor, test, chore).
+- Nunca hacer force push (`--force` ni `--force-with-lease`).
